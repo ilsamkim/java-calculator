@@ -1,27 +1,45 @@
 package step2;
 
+import java.util.ArrayList;
+
 public class Calculator {
-    int num1;
-    int num2;
-    char operator;
 
-    public Calculator(int num1, int num2, char operator) {
-        this.num1 = num1;
-        this.num2 = num2;
-        this.operator = operator;
-    }
+    private ArrayList<Double> numList = new ArrayList<>();
 
-    int add(){
-        return num1 + num2;
-    }
-    int subtract(){
-        return num1 - num2;
-    }
-    int multiply(){
-        return num1 * num2;
-    }
-    double divide(){
-        return (double) num1 / num2;
+    public int add(int num1, int num2) {
+        int result = num1 + num2;
+        numList.add((double) result);
+        return result;
     }
 
+    public int subtract(int num1, int num2) {
+        int result = num1 - num2;
+        numList.add((double) result);
+        return result;
+    }
+
+    public int multiply(int num1, int num2) {
+        int result = num1 * num2;
+        numList.add((double) result);
+        return result;
+    }
+
+    public double divide(int num1, int num2) {
+        double result = (double) num1 / num2;
+        numList.add(result);
+        return result;
+    }
+
+    public ArrayList<Double> getNumList() {
+        return numList;
+    }
+
+    public void setNumList(ArrayList<Double> numList) {
+        this.numList = numList;
+    }
+
+    public void removeFirstList() {
+        numList.remove(0);
+
+    }
 }
