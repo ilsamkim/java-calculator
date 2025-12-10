@@ -8,8 +8,10 @@ public class App {
         Scanner sc = new Scanner(System.in);
         String str1 = "";
 
+        // Double 타입을 사용하는 Calculator 객체 생성
         Calculator<Double> calc = new Calculator<>();
 
+        // exit 입력 전까지 반복
         while (!str1.equals("exit")) {
             System.out.print("첫 번째 숫자를 입력하세요: ");
             double num1 = sc.nextDouble();
@@ -20,8 +22,10 @@ public class App {
             System.out.print("두 번째 숫자를 입력하세요: ");
             double num2 = sc.nextDouble();
 
+            // 입력받은 기호를 OperatorType으로 변환
             OperatorType operator = OperatorType.fromSymbol(operatorChar);
 
+            // 예외 처리
             if (operator == null) {
                 System.out.println("잘못된 연산자입니다");
             } else if (operator == OperatorType.DIVIDE && num2 == 0) {
@@ -36,14 +40,14 @@ public class App {
             str1 = sc.next();
         }
 
-        // 조회 기능 테스트
+        // 저장된 결과 조회 기능 테스트
         System.out.println("*** 조회 기능 테스트 ***");
         System.out.println("전체 결과: " + calc.getNumList());
         System.out.println("조회할 기준값을 입력하세요: ");
         double compareNum = sc.nextDouble();
         System.out.println(compareNum + "보다 큰 결과: " + calc.getResultsGreaterThan(compareNum));
 
-        // remove 테스트
+        // 가장 오래된 결과 삭제 테스트
         System.out.println("*** removeFirstList 테스트 ***");
         System.out.println("삭제 전 결과: " + calc.getNumList());
         calc.removeFirstList();
